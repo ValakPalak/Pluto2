@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -18,6 +20,7 @@ import java.util.List;
 public class Saved extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
+    ImageView BackS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +30,20 @@ public class Saved extends AppCompatActivity {
         ArrayList<String> arrayList = new ArrayList<>();
 
         arrayList.add("Books");
-        arrayList.add("Experts");
+//        arrayList.add("Experts");
         prepareViewPager(viewPager, arrayList);
 
         tabLayout.setupWithViewPager((viewPager));
+
+        BackS = findViewById(R.id.BackS);
+        BackS.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
-
-
     private void prepareViewPager(ViewPager viewPager, ArrayList<String> arrayList) {
 
         MainAdapter adapter = new MainAdapter(getSupportFragmentManager());

@@ -44,6 +44,7 @@ public class BookDescription extends AppCompatActivity {
     RecyclerView recyclerView;
     ImageView imageView;
     Button buy;
+    ImageView Back1;
     List<String> name=new ArrayList<>();
     RecommenderAdapter recommenderAdapter;
     ArrayList<RecommenderModel> Recom=new ArrayList<>();
@@ -61,6 +62,14 @@ public class BookDescription extends AppCompatActivity {
                 load();
             }
         });
+        Back1 = findViewById(R.id.Back1);
+        Back1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         imageView=findViewById(R.id.Bookmark);
         buy=findViewById(R.id.buybutton);
         recyclerView=findViewById(R.id.BookRecRecyclerView);
@@ -69,6 +78,7 @@ public class BookDescription extends AppCompatActivity {
         bookRecNoTxtView=findViewById(R.id.BookRec);
         bookImage=findViewById(R.id.BookImg);
         SourceTxtView=findViewById(R.id.ViewSource);
+
         Intent intent=getIntent();
         BooksModel booksModel=intent.getParcelableExtra("array");
          jsonArray= booksModel.getReccom();
@@ -80,7 +90,7 @@ public class BookDescription extends AppCompatActivity {
         Log.d("booklist",booksModelList.toString());
         if(name.contains(booksModel.getmBookName()))
         {
-            imageView.setBackgroundColor(0xFFFF0000);
+            imageView.setBackgroundResource(R.drawable.ic_baseline_bookmark_24);
         }
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +105,7 @@ public class BookDescription extends AppCompatActivity {
                     saveSharedPreferencesLogNameList(name);
 
 
-                    Toast.makeText(BookDescription.this, "Bookmark removed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BookDescription.this, "Book Unsaved", Toast.LENGTH_SHORT).show();
                     imageView.setBackgroundColor(0xffffff);
                 }
                 else{
@@ -103,8 +113,8 @@ public class BookDescription extends AppCompatActivity {
                     saveSharedPreferencesLogNameList(name);
                     booksModelList.add(booksModel);
                     saveSharedPreferencesModeLogList(booksModelList);
-                    imageView.setBackgroundColor(0xFFFF0000);
-                    Toast.makeText(BookDescription.this, "Book Mark added", Toast.LENGTH_SHORT).show();
+                    imageView.setBackgroundResource(R.drawable.ic_baseline_bookmark_24);
+                    Toast.makeText(BookDescription.this, "Book Saved", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -145,7 +155,10 @@ public class BookDescription extends AppCompatActivity {
         try {
             if(jsonArray!=null) {
                 JSONArray jsonArray1=new JSONArray(jsonArray);
-                Toast.makeText(this, ""+num, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, ""+num, Toast.LENGTH_SHORT).show();
+                if(jsonArray1.length()<=3) {
+                    cardView.setVisibility(View.GONE);
+                }
                 for(int i=num;i<Math.min(jsonArray1.length(),num+3);i++)
                 {
                     JSONObject jsonObject=jsonArray1.getJSONObject(i);
@@ -155,11 +168,13 @@ public class BookDescription extends AppCompatActivity {
                     Recom.add(new RecommenderModel(expert, quote, source));
                 }
                 num = num + 3;
-                recommenderAdapter = new RecommenderAdapter(Recom);
-                recyclerView.setAdapter(recommenderAdapter);
                 if(num>=jsonArray1.length()) {
                     cardView.setVisibility(View.GONE);
                 }
+
+                recommenderAdapter = new RecommenderAdapter(Recom);
+                recyclerView.setAdapter(recommenderAdapter);
+
             }
         } catch (JSONException jsonException) {
             jsonException.printStackTrace();

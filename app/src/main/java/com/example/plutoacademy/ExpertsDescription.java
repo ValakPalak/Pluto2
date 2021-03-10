@@ -35,19 +35,19 @@ import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ExpertsDescription extends AppCompatActivity implements OnItemClick {
+public class ExpertsDescription extends AppCompatActivity {
 
     CircularImageView profile_image;
     TextView expert_name;
     TextView designation,about;
     TextView viewallbook;
     TextView viewallexpert;
-    ImageView cover_image;
+    ImageView cover_image, BackE;
     RecyclerView recyclerView;
     ArrayList<BooksModel> booksModelsList=new ArrayList<>();
     BooksAdapter booksAdapter;
     RecyclerView SocialMediaRV;
-    RecyclerView.Adapter SocialMediaApdapter;
+    SmAdapter SocialMediaApdapter;
     RecyclerView.LayoutManager SocialMediaLM;
     public static Boolean Books=false;
     public static Boolean Expert=false;
@@ -79,6 +79,14 @@ public class ExpertsDescription extends AppCompatActivity implements OnItemClick
         Picasso.get().load(expertsModel.getmExpertImage()).into(profile_image);
         String slug=expertsModel.getSlug();
         getData(slug);
+        BackE = findViewById(R.id.BackE);
+        BackE.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         Books=false;
         viewallbook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,18 +103,34 @@ public class ExpertsDescription extends AppCompatActivity implements OnItemClick
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
             }
         });
-
-        booksAdapter=new BooksAdapter(booksModelsList,ExpertsDescription.this);
+        booksAdapter=new BooksAdapter(booksModelsList, new OnItemClick() {
+            @Override
+            public void Onclick(int position) {
+                Intent mIntent=new Intent(getApplicationContext(),BookDescription.class);
+                mIntent.putExtra("array",booksModelsList.get(position));
+                startActivity(mIntent);
+            }
+        });
         recyclerView.setAdapter(booksAdapter);
 
         SocialMediaRV = findViewById(R.id.socialmdedia);
         SocialMediaApdapter = new SmAdapter(SocialMediaList,getApplicationContext());
         SocialMediaRV.setAdapter(SocialMediaApdapter);
-        mRecyclerView = findViewById(R.id.ExpertsYMLRecyclerView);
-        mAdapter=new ExpertsAdapter(ExpertsList,this);
-        getData(1);
-        mRecyclerView.setAdapter(mAdapter);
 
+
+        mRecyclerView = findViewById(R.id.ExpertsYMLRecyclerView);
+
+
+        mAdapter=new ExpertsAdapter(ExpertsList, new OnItemClick() {
+            @Override
+            public void Onclick(int position) {
+                Intent intent=new Intent(getApplicationContext(),ExpertsDescription.class);
+                intent.putExtra("details",ExpertsList.get(position));
+                startActivity(intent);
+            }
+        });
+        getDataE(1);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void getData(String slug) {
@@ -140,10 +164,10 @@ public class ExpertsDescription extends AppCompatActivity implements OnItemClick
                         JSONObject logo=logos.getJSONObject(i);
                         System.out.println("working");
                         SocialMediaList.add(new SmModel(logo.getString("logo"),logo.getString("link")));
-                        Toast.makeText(ExpertsDescription.this, ""+logo.getString("logo"), Toast.LENGTH_SHORT).show();
-                        SocialMediaApdapter.notifyDataSetChanged();
-                    }
+                     //   Toast.makeText(ExpertsDescription.this, ""+logo.getString("logo"), Toast.LENGTH_SHORT).show();
 
+                    }
+                    SocialMediaApdapter.notifyDataSetChanged();
 
                     booksAdapter.notifyDataSetChanged();
                 } catch (JSONException jsonException) {
@@ -158,18 +182,7 @@ public class ExpertsDescription extends AppCompatActivity implements OnItemClick
         });
         requestQueue.add(stringRequest);
     }
-    @Override
-    public void Onclick(int position) {
-
-        Intent mIntent=new Intent(getApplicationContext(),BookDescription.class);
-        mIntent.putExtra("array",booksModelsList.get(position));
-        startActivity(mIntent);
-
-
-
-
-    }
-    private void getData(int v) {
+    private void getDataE(int v) {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         String url="https://plutoacademy.in/api/experts/list?page="+ 1;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

@@ -13,14 +13,12 @@
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlutoAcademy"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
-        <activity android:name=".ExpertsDescription"></activity>
-
-
+        <activity android:name=".Feedback"></activity>
+        <activity android:name=".ExpertsDescription" />
         <activity android:name=".Saved" />
         <activity android:name=".ChangeInterests" />
         <activity android:name=".BookDescription" />

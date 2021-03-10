@@ -49,9 +49,22 @@ public class SmAdapter extends RecyclerView.Adapter<SmAdapter.ExampleViewHolder>
     @Override
     public void onBindViewHolder(ExampleViewHolder holder, int position) {
 
-        Glide.with(context).load(mExampleList.get(position).getLink()).into(holder.mImageView);
-
-
+        Glide.with(context).load(mExampleList.get(position).getLogo()).into(holder.mImageView);
+        holder.mImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String buy_url=mExampleList.get(position).getLink();
+                if (buy_url.startsWith("https://") || buy_url.startsWith("http://")) {
+                    Uri uri = Uri.parse(buy_url);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+                else{
+                    Toast.makeText(context, "Invalid Url", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
