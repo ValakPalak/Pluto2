@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Pluto2.PlutoAcademy.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Pluto2.PlutoAcademy.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlutoAcademy.iml" filepath="$PROJECT_DIR$/.idea/modules/PlutoAcademy.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PlutoAcademy.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PlutoAcademy.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/check-2.0.PlutoAcademy.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/check-2.0.PlutoAcademy.app.iml" />
     </modules>
   </component>
 </project>

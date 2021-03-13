@@ -84,7 +84,7 @@ public class BookDescription extends AppCompatActivity {
          jsonArray= booksModel.getReccom();
          String buy_url=booksModel.getBuy();
 
-        Toast.makeText(this, ""+booksModel.getmBookName(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, ""+booksModel.getmBookName(), Toast.LENGTH_SHORT).show();
         booksModelList=loadSharedPreferencesLogModelList();
         name=loadSharedPreferencesLogNameList();
         Log.d("booklist",booksModelList.toString());

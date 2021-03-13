@@ -195,7 +195,7 @@ public class ExpertsFragment extends Fragment implements  OnItemClick {
 
 
     private void getDataOnSearch(String expert) {
-        Toast.makeText(getContext(), ""+expert, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), ""+expert, Toast.LENGTH_SHORT).show();
 
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         String url="https://plutoacademy.in/api/experts/search?val=" + expert;

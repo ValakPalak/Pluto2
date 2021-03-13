@@ -242,7 +242,7 @@ public class BooksFragment extends Fragment implements  OnItemClick {
     }
 
     private void getDataOnSearch(String book) {
-        Toast.makeText(getContext(), ""+book, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), ""+book, Toast.LENGTH_SHORT).show();
 
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         String url="https://plutoacademy.in/api/books/search?val=" + book;

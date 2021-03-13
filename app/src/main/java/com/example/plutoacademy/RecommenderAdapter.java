@@ -35,7 +35,7 @@ public class RecommenderAdapter extends RecyclerView.Adapter<RecommenderAdapter.
                 @Override
                 public void onClick(View v) {
                     String url=source.getText().toString();
-                    Toast.makeText(itemView.getContext(), ""+url, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(itemView.getContext(), ""+url, Toast.LENGTH_SHORT).show();
                     Uri uri = Uri.parse(url);
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     v.getContext().startActivity(intent);
