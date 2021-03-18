@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "PlutoAcademy"
+rootProject.name = "Books2Read"
