@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.plutoacademy.HomeFragment"
+        android:name="com.books2.read.HomeFragment"
         android:label="@string/title_books"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_books"
-        android:name="com.example.plutoacademy.BooksFragment"
+        android:name="com.books2.read.BooksFragment"
         android:label="@string/title_books"
         tools:layout="@layout/fragment_books" />
 
     <fragment
         android:id="@+id/navigation_experts"
-        android:name="com.example.plutoacademy.ExpertsFragment"
+        android:name="com.books2.read.ExpertsFragment"
         android:label="@string/title_experts"
         tools:layout="@layout/fragment_experts" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.plutoacademy.ProfileFragment"
+        android:name="com.books2.read.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 

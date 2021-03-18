@@ -33,32 +33,6 @@
 <!--                android:queryHint="Search 'Books'"-->
 <!--                android:voiceIcon="@drawable/mic" />-->
 <!--        </androidx.cardview.widget.CardView>-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/prompt_extrabold"
-                android:text="Pluto "
-                android:textColor="#0D70D8"
-                android:id="@+id/pluto"
-                android:textSize="25dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/pluto"
-                android:fontFamily="@font/prompt"
-                android:text="Academy"
-                android:textColor="#0D70D8"
-                android:textSize="25dp" />
-        </RelativeLayout>
-
-
 
 
         <ScrollView
@@ -68,6 +42,32 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/pluto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_extrabold"
+                        android:text="BOOKS"
+                        android:textColor="#0D70D8"
+                        android:textSize="25dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/pluto"
+                        android:fontFamily="@font/prompt"
+                        android:text="2READ"
+                        android:textColor="#0D70D8"
+                        android:textSize="25dp" />
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -565,7 +565,7 @@
                     android:layout_height="320dp"
                     app:iss_auto_cycle="true"
                     android:padding="@dimen/activity_horizontal_margin"
-                    app:iss_period="1000"
+                    app:iss_period="3000"
                     app:iss_delay="0"/>
 
                 <TextView
@@ -583,7 +583,7 @@
                     android:layout_height="210dp"
                     app:iss_auto_cycle="false"
                     android:layout_marginTop="-10dp"
-                    app:iss_period="1000"
+                    app:iss_period="3000"
                     app:iss_delay="0"/>
 <!--                <org.imaginativeworld.whynotimagecarousel.ImageCarousel-->
 <!--                    android:id="@+id/carousel"-->

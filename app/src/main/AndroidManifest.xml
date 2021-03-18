@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.plutoacademy">
+    package="com.books2.read">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,13 +17,13 @@
         android:theme="@style/Theme.PlutoAcademy"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Feedback"></activity>
-        <activity android:name=".ExpertsDescription" />
-        <activity android:name=".Saved" />
-        <activity android:name=".ChangeInterests" />
-        <activity android:name=".BookDescription" />
+        <activity android:name="com.books2.read.Feedback"></activity>
+        <activity android:name="com.books2.read.ExpertsDescription" />
+        <activity android:name="com.books2.read.Saved" />
+        <activity android:name="com.books2.read.ChangeInterests" />
+        <activity android:name="com.books2.read.BookDescription" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.books2.read.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.books2.read.MainActivity">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
